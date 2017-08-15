@@ -1,0 +1,12 @@
+<button (click)="running ? stop() : start()" 
+        [style.background]="running ? 'red' : 'green'">
+        {{running ? 'Stop' : 'Start'}}
+</button>
+
+<div>
+  {{accumulatedInternal}}
+</div>
+
+<button [style.visibility]="running ? 'hidden' : 'visible'" (click)="removeCounter()">
+  Remove Counter
+</button>

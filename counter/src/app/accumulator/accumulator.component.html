@@ -1,0 +1,16 @@
+<p>
+  Accumulated: {{accumulated}}
+</p>
+
+<div>
+  <input type="number" [(ngModel)]="tick"/>
+  <button (click)="addCounter(tick)">Add Counter</button>
+  <button (click)="startAll()">Start All</button>
+</div>
+
+<ct-counter
+  *ngFor="let counter of counters; let i=index"
+  (onRemove)="removeCounter(i)"
+  (onCount)="accumulate($event)"
+  [tick]="counter.tick">
+</ct-counter>
