@@ -1,3 +1,4 @@
+import { CounterService } from './../services/counter.service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Observable, Subscription } from "rxjs";
 
@@ -17,12 +18,13 @@ export class CounterComponent implements OnInit {
   @Output() public onCount: EventEmitter<number> = new EventEmitter<number>();
   @Output() public onRemove: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor() { }
+  constructor(private counter: CounterService) {}
 
   ngOnInit() {
   }
 
   public start(): void {
+    this.counter.greet();
     this.running = true;
     this.accumulatedInternal = 0;
 

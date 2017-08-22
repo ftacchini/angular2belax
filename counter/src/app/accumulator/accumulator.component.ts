@@ -1,3 +1,4 @@
+import { CounterService } from './../services/counter.service';
 import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
 import { CounterComponent } from "../counter/counter.component";
 
