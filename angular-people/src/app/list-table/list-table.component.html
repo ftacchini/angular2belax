@@ -1,0 +1,25 @@
+<br /><br />
+<div>Amount of good people: {{getGoodPeopleCount()}}</div>
+<div>Amount of bad people: {{people.length - getGoodPeopleCount()}}</div>
+<table class="app-list-table" (onAddedPerson)="addPerson($event)">
+  <thead>
+    <tr>
+      <th colspan="2">
+        People List
+      </th>
+    </tr> 
+    <tr>
+      <th>Name</th>
+      <th>is Good?</th>
+    </tr>
+  </thead>
+  <tr *ngFor="let person of people">
+    <td [style.color]="person.good ? 'green' : 'red'">
+      {{person.name}}
+    </td>
+    <td>
+      {{person.good ? 'Yes' : 'No'}}
+      - Change this: <input type="checkbox" [checked]="person.good" (change)="person.good = !person.good">
+    </td>
+  </tr>
+</table>

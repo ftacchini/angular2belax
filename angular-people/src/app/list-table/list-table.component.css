@@ -1,0 +1,9 @@
+table, table tr td, table th {
+    border: 1px solid;
+    padding: 2px;
+}
+
+table.app-list-table {
+    margin-top: 10px;
+    width: 100%;
+}
