@@ -1,3 +1,6 @@
+import { GoodBadPipe } from './../pipes/good-bad.pipe';
+import { PersonPipe } from './../pipes/person.pipe';
+import { PeopleService } from './../service/people.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { Person }  from '../dataModel/person';
 
@@ -8,27 +11,42 @@ import { Person }  from '../dataModel/person';
 })
 export class ListTableComponent implements OnInit {
 
-  public people: Person [] = [];
+  //public people: Person [] = [];
 
-  constructor() { }
+  filterGood: boolean = true;
+
+  constructor(public peopleService: PeopleService) { }
 
   ngOnInit() {
+    this.peopleService.getPeopleFromServer();
   }
 
-  public addPerson(name: string) {
+  get people () : Person [] {
+    return this.peopleService.getPeople();
+  }
+
+/*   public addPerson(name: string) {
     console.log("en list component: " + name);
     var p = new Person();
     p.setName(name);
     this.people.push(p);
-  }
+  } */
 
-  public setAllGood(status: boolean) {
+/*   public setAllGood(status: boolean) {
     for(let person of this.people) {
       person.good = status;
     }
+  } */
+
+  get peopleCount () : number {
+    return this.peopleService.getGoodPeopleCount();
   }
 
-  getGoodPeopleCount() {
+  updatePersonStatus (id: number, status: boolean) {
+    this.peopleService.updatePersonStatus(id, status);
+  }
+
+  /* getGoodPeopleCount() {
     let count = 0;
     for(let person of this.people) {
       if(person.good) {
@@ -36,6 +54,6 @@ export class ListTableComponent implements OnInit {
       }
     }
     return count;
-  }
+  } */
 
 }

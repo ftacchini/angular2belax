@@ -7,3 +7,11 @@ table.app-list-table {
     margin-top: 10px;
     width: 100%;
 }
+
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
+}

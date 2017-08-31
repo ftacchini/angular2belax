@@ -1,7 +1,23 @@
 <br /><br />
-<div>Amount of good people: {{getGoodPeopleCount()}}</div>
-<div>Amount of bad people: {{people.length - getGoodPeopleCount()}}</div>
-<table class="app-list-table" (onAddedPerson)="addPerson($event)">
+<div>Amount of good people: {{peopleCount}}</div>
+<!-- (onAddedPerson)="addPerson($event)" -->
+<div>Amount of bad people: {{people.length - peopleCount}}</div>
+
+<div>
+  See only good people <input type="radio" [(ngModel)]="filterGood" [value]="true" /> 
+  See only bad people <input type="radio" [(ngModel)]="filterGood" [value]="false" />
+</div>
+
+<h3>People List</h3>
+<ul>
+  <li *ngFor="let person of people | goodBad:filterGood" appHighlight>
+      {{person | personPipe}}
+      <span [ngClass]="person.good ? 'green' : 'red'">{{person.good ? 'Good' : 'Bad'}}</span>
+      - Change this: <input type="checkbox" [checked]="person.good" (change)="updatePersonStatus(person.id, person.good = !person.good)">
+  </li>
+</ul>
+
+<!-- <table class="app-list-table">
   <thead>
     <tr>
       <th colspan="2">
@@ -22,4 +38,4 @@
       - Change this: <input type="checkbox" [checked]="person.good" (change)="person.good = !person.good">
     </td>
   </tr>
-</table>
+</table> -->

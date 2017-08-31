@@ -1,3 +1,4 @@
+import { PeopleService } from './../service/people.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
@@ -8,25 +9,29 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 export class HeaderToolsComponent implements OnInit {
 
-  @Output() public onAdd: EventEmitter<string> = new EventEmitter<string>();
-  @Output() public onAllGood: EventEmitter<boolean> = new EventEmitter<boolean>();
+/*   @Output() public onAdd: EventEmitter<string> = new EventEmitter<string>();
+  @Output() public onAllGood: EventEmitter<boolean> = new EventEmitter<boolean>(); */
 
   public newName = "";
+  public newLastName = "";
 
-  constructor() { }
+  constructor(private peopleService: PeopleService) { }
 
   ngOnInit() {
   }
 
-  public addPerson(newName) {
-    if(newName.length) {
+  public addPerson(newName: string, newLastName: string) {
+    if(newName.length && newLastName.length) {
       this.newName = "";
-      this.onAdd.emit(newName);
+      this.newLastName = "";
+      //this.onAdd.emit(newName);
+      this.peopleService.addPerson(newName, newLastName);
     }
   }
 
   public allGood(status) {
-    this.onAllGood.emit(status);
+    //this.onAllGood.emit(status);
+    this.peopleService.setAllGood(status);
   }
 
 }

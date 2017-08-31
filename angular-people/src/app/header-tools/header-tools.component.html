@@ -1,8 +1,10 @@
 <div>
   <fieldset>
     <legend>Add Person</legend>
-    Person name: <input [(ngModel)]="newName" (keyup.enter)="addPerson(newName)" />
-    <button (click)="addPerson(newName)">Add</button>
+    <!-- (keyup.enter)="addPerson(newName)" -->
+    Person name: <input [(ngModel)]="newName" />
+    Person last name: <input [(ngModel)]="newLastName" />
+    <button (click)="addPerson(newName, newLastName)">Add</button>
     <br /><br />
     <button (click)="allGood(true)">All Good</button>
     <button (click)="allGood(false)">All Bad</button>
