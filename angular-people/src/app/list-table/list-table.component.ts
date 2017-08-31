@@ -43,7 +43,7 @@ export class ListTableComponent implements OnInit {
   }
 
   updatePersonStatus (id: number, status: boolean) {
-    this.peopleService.updatePersonStatus(id, status);
+    this.peopleService.updatePersonStatusAndRefreshPeople(id, status);
   }
 
   /* getGoodPeopleCount() {
