@@ -1,0 +1,13 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{title}}!
+  </h1>
+</div>
+<nav>
+  <a routerLink="/profile" routerLinkActive="active">Profile</a>
+  <a routerLink="/posts" routerLinkActive="active">Posts</a>
+  <a routerLink="/friends" routerLinkActive="active">friends</a>
+  <a (click)="logout()" [hidden]="!userIsLogged">Logout</a>
+</nav>
+<router-outlet></router-outlet>
