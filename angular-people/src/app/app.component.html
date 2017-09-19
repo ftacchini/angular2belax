@@ -4,6 +4,10 @@
     Welcome to {{title}}!
   </h1>
 </div>
+
+<nav>
+  <a routerLink="/" routerLinkActive="active">Home</a>
+  <a routerLink="/people" routerLinkActive="active">People Management</a>
+</nav>
 <!-- (onAdd)="personAdded($event)" (onAllGood)="allGood($event)" -->
-<app-header-tools></app-header-tools>
-<app-list-table></app-list-table>
+<router-outlet></router-outlet>

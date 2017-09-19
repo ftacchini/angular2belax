@@ -16,7 +16,7 @@ export class PeopleService {
   }
 
   getPeopleFromServer() {
-    this.http.get<Person[]>('http://localhost:3000/people').subscribe(data => {
+    this.http.get<Person[]>('http://localhost:3001/people').subscribe(data => {
       //console.log(data);
 
      //TODO: mapear los datos del server
@@ -32,7 +32,7 @@ export class PeopleService {
 
     const body = {name: name, lastName: lastName, good: false};
 
-    this.http.post('http://localhost:3000/people', body, {
+    this.http.post('http://localhost:3001/people', body, {
       headers: new HttpHeaders().set('Content-Type','application/json')
     }).subscribe(data => {
       this.getPeopleFromServer();
@@ -43,7 +43,7 @@ export class PeopleService {
   public updatePersonStatus(id: number, status: boolean) {
     const body = {good: status};
     
-    this.http.patch('http://localhost:3000/people/'+id, body, {
+    this.http.patch('http://localhost:3001/people/'+id, body, {
       headers: new HttpHeaders().set('Content-Type','application/json')
     }).subscribe(data => {
       this.getPeopleFromServer();

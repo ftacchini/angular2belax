@@ -14,6 +14,7 @@
       {{person | personPipe}}
       <span [ngClass]="person.good ? 'green' : 'red'">{{person.good ? 'Good' : 'Bad'}}</span>
       - Change this: <input type="checkbox" [checked]="person.good" (change)="updatePersonStatus(person.id, person.good = !person.good)">
+      <a routerLink="/people/{{person.id}}">Detail</a>
   </li>
 </ul>
 
