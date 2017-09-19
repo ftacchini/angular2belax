@@ -31,7 +31,7 @@ export class HeaderToolsComponent implements OnInit {
 
   public allGood(status) {
     //this.onAllGood.emit(status);
-    this.peopleService.setAllGood(status);
+    this.peopleService.setAllGoodAndRefresh(status);
   }
 
 }

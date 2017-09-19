@@ -1,7 +1,9 @@
+import { element } from 'protractor';
 import { HttpClientModule } from '@angular/common/http';
 import { Person } from './../dataModel/person';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { Observable } from "rxjs";
 
 @Injectable()
 export class PeopleService {
@@ -45,15 +47,22 @@ export class PeopleService {
     
     this.http.patch('http://localhost:3001/people/'+id, body, {
       headers: new HttpHeaders().set('Content-Type','application/json')
-    }).subscribe(data => {
+    });
+  }
+
+  public updatePersonStatusAndRefreshPeople(id: number, status: boolean) {
+    this.updatePersonStatus(id, status).subscribe(data => {
       this.getPeopleFromServer();
     })
   }
 
-  public setAllGood(status) {
-    for(let person of this.people) {
-      person.good = status;
-    }
+  public setAllGoodAndRefresh(status) {
+
+    var observables = this.people.map(person => this.updatePersonStatus(person.id, status));
+
+    Observable.forkJoin(observables).subscribe(data => {
+      this.getPeopleFromServer();
+    })
   }
 
   public getGoodPeopleCount() {
