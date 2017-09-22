@@ -1,5 +1,11 @@
 <ul>
-  <li *ngFor="let friend of friends">
-    {{friend.name}} {{friend.lastname}}
+  <li *ngFor="let user of users">
+    {{user.name}} {{user.lastname}}
+
+    <span class="friends" [hidden]="!checkIfUserIsFriend(user.id)">Friends! 
+      <a routerLink="/users/{{user.id}}">See posts</a>
+      <button (click)="removeFriendFromList(user.id)">Unfriend</button>
+    </span>
+    <button class="add-friend" (click)="addFriendToList(user.id)" [hidden]="checkIfUserIsFriend(user.id)">Add friend</button>
   </li>
 </ul>

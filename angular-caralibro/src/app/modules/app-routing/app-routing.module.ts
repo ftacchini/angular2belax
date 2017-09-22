@@ -19,8 +19,8 @@ const appRoutes : Routes = [
     children: [
     { path: 'profile', component: UserDetailComponent },
     { path: 'posts', component: PostsComponent },
-    { path: 'friends', component: FriendsComponent },
-    { path: 'friends/:id', component: FriendDetailComponent },
+    { path: 'users', component: FriendsComponent },
+    { path: 'users/:id', component: FriendDetailComponent },
     { path: '', redirectTo: 'profile', pathMatch: 'full' }
     ]
 },

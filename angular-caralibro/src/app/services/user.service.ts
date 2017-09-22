@@ -28,11 +28,13 @@ export class UserService {
     return this.friends;
   }
 
+  public getUsers() {
+    return this.users;
+  }
+
   public getUserFriends(user: User) {
-     console.log(user);
      let friends = user.getFriends();
      let friendsAmount = friends.length;
-     console.log("friendsAmount: " + friendsAmount);
      if(friendsAmount) {
        let filter = "?id=";
        for(let i = 0; i < friendsAmount; i++) {
@@ -42,7 +44,6 @@ export class UserService {
            filter += [i];
          }
        }
-       console.log("filter: " + filter);
        this.http.get<User[]>('http://localhost:3000/users' + filter).subscribe(data => {
         this.friends = data;
        });
@@ -67,9 +68,30 @@ export class UserService {
   }
 
   public getUserByNameAndPassword(userName: string, password: string): Observable<User> {
-    console.log("getUserByNameAndPassword");
     let findUserByLoginUrl = 'http://localhost:3000/users?username='+userName+'&password='+password;
     return this.http.get<User>(findUserByLoginUrl);
+  }
+
+  public updateUserFriends(userId: number, friends: number[]) {
+    const body = {friends: friends};
+    
+    this.http.patch('http://localhost:3000/users/'+userId, body, {
+      headers: new HttpHeaders().set('Content-Type','application/json')
+    }).subscribe(data => {
+        this.getUsersFromServer();
+      }
+    );
+  }
+
+  public updateUserLikes(user: User) {
+    const body = {likes: user.getLikes()};
+    
+    this.http.patch('http://localhost:3000/users/'+user.getId(), body, {
+      headers: new HttpHeaders().set('Content-Type','application/json')
+    }).subscribe(data => {
+        this.getUsersFromServer();
+      }
+    );
   }
 
 }

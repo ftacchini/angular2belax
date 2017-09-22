@@ -1,3 +1,9 @@
-<p>
-  friend-detail works!
-</p>
+<ul>
+  <h4 [hidden]="posts.length">No posts for current user</h4>
+  <li *ngFor="let post of posts">
+      <p>{{post.text}}</p>
+      Likes: {{post.likes}} - 
+      <a (click)="addLike(post.id)" [hidden]="alreadyLiked(post.id)">Like</a>
+      <a (click)="removeLike(post.id)" [hidden]="!alreadyLiked(post.id)">Unlike</a>
+  </li>
+</ul>

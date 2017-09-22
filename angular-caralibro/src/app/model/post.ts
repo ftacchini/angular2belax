@@ -4,6 +4,7 @@ export class Post {
     public userId: number;
     public text: string;
     public likes: number;
+    public voted: boolean;
 
     constructor () {}
 

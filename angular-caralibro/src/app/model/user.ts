@@ -7,6 +7,7 @@ export class User {
     public lastName: string;
     public logged: boolean;
     public friends: number [];
+    public likes: number [];
 
     constructor () {}
     
@@ -81,6 +82,35 @@ export class User {
 
     private findFriendById(id: number) {
         return this.friends.findIndex(x => x === id);
+    }
+
+    public getLikes() {
+        if(!this.likes) {
+            this.likes = [];
+        }
+        return this.likes;
+    }
+
+    public setLikes(likes: number []) {
+        this.likes = likes;
+    }
+
+    public addLike(postId: number) {
+        let index = this.findLikeById(postId);
+        if(index === -1){
+            this.likes.push(postId);
+        }
+    }
+
+    public removeLike(postId: number) {
+        let index = this.findLikeById(postId);
+        if(index !== -1) {
+            this.likes.splice(index, 1);
+        }
+    }
+
+    public findLikeById(id: number) {
+        return this.likes.indexOf(id);
     }
 
 }

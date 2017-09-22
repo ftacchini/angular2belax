@@ -1,0 +1,106 @@
+{
+  "users": [
+    {
+      "username": "gabo",
+      "password": "1234",
+      "name": "Gabriel",
+      "lastname": "Guzman",
+      "logged": false,
+      "id": 1,
+      "friends": [
+        3,
+        5,
+        6
+      ],
+      "likes": [
+        4
+      ]
+    },
+    {
+      "username": "fede",
+      "password": "1234",
+      "name": "Federico",
+      "lastname": "Tacchini",
+      "logged": false,
+      "id": 2,
+      "friends": [],
+      "likes": []
+    },
+    {
+      "username": "mati",
+      "password": "1234",
+      "name": "Matias",
+      "lastname": "Berlot",
+      "logged": false,
+      "id": 3,
+      "friends": [],
+      "likes": []
+    },
+    {
+      "username": "eva",
+      "password": "1234",
+      "name": "Evangelina",
+      "lastname": "Selman",
+      "logged": false,
+      "id": 4,
+      "friends": [],
+      "likes": []
+    },
+    {
+      "username": "ani",
+      "password": "1234",
+      "name": "Anahi",
+      "lastname": "Valdiviezo",
+      "logged": false,
+      "id": 5,
+      "friends": [],
+      "likes": []
+    },
+    {
+      "username": "nico",
+      "password": "1234",
+      "name": "Nicolas",
+      "lastname": "Sigal",
+      "logged": false,
+      "id": 6,
+      "friends": [],
+      "likes": []
+    },
+    {
+      "username": "tadeo",
+      "password": "1234",
+      "name": "Tadeo",
+      "lastname": "Riveros",
+      "logged": false,
+      "id": 7,
+      "friends": [],
+      "likes": []
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "userId": 1,
+      "text": "First Post",
+      "likes": 0
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "text": "Second post gabo",
+      "likes": 23
+    },
+    {
+      "userId": 1,
+      "text": "manso",
+      "likes": 0,
+      "id": 3
+    },
+    {
+      "userId": 3,
+      "text": "post para votar",
+      "likes": 7,
+      "id": 4
+    }
+  ]
+}
